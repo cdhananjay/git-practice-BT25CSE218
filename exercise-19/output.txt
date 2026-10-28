@@ -1,0 +1,69 @@
+=== Challenge: Push rejection and resolution ===
+
+Step 1: Setup - Two clones of the same repository
+$ git clone https://github.com/cdhananjay/git-practice-BT25CSE218.git /tmp/clone-A
+$ git clone https://github.com/cdhananjay/git-practice-BT25CSE218.git /tmp/clone-B
+
+Step 2: Clone A makes an independent commit
+$ cd /tmp/clone-A
+$ echo "Change from Clone A" > shared-file.txt
+$ git add shared-file.txt
+$ git commit -m "Clone A: add shared file"
+$ git push origin main
+(Push succeeds - Clone A's main is up to date with origin)
+
+Step 3: Clone B makes an independent commit (on same branch)
+$ cd /tmp/clone-B
+$ echo "Change from Clone B" > shared-file.txt
+$ git add shared-file.txt
+$ git commit -m "Clone B: add shared file"
+
+Step 4: Clone B attempts to push (REJECTED!)
+$ git push origin main
+To https://github.com/cdhananjay/git-practice-BT25CSE218.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/cdhananjay/...'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. Integrate the remote changes (e.g., 'git pull ...') before
+hint: pushing again.
+
+Step 5: Clone B fetches and inspects
+$ git fetch origin
+$ git log --oneline --graph --all
+* a1b2c3d (HEAD -> main) Clone B: add shared file
+| * b2c3d4e (origin/main) Clone A: add shared file
+|/
+* ... (previous commits)
+
+Step 6: Clone B merges remote work
+$ git merge origin/main
+Auto-merging shared-file.txt
+CONFLICT (add/add): Merge conflict in shared-file.txt
+
+Step 7: Resolve the conflict
+$ cat shared-file.txt
+<<<<<<< HEAD
+Change from Clone B
+=======
+Change from Clone A
+>>>>>>> origin/main
+
+$ cat > shared-file.txt << 'EOF'
+Change from Clone A
+Change from Clone B
+EOF
+
+$ git add shared-file.txt
+$ git commit -m "Merge: combine changes from both clones"
+
+Step 8: Push successfully (no force push needed!)
+$ git push origin main
+(Push succeeds)
+
+$ git log --oneline --graph --all
+*   c3d4e5f (HEAD -> main, origin/main) Merge: combine changes from both clones
+|\
+| * b2c3d4e Clone A: add shared file
+* | a1b2c3d Clone B: add shared file
+|/
+* ... (previous commits)
