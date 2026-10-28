@@ -1,0 +1,41 @@
+=== Step 1: Create .gitignore ===
+$ cat .gitignore
+*.log
+*.tmp
+build/
+.env
+
+=== Step 2: Create matching dummy files ===
+$ echo "debug output" > debug.log
+$ echo "temp data" > data.tmp
+$ mkdir build && echo "compiled" > build/app.out
+$ echo "SECRET_KEY=abc123" > .env
+
+=== Step 3: Verify ignore rules ===
+$ git status --short
+?? .gitignore
+
+(Only .gitignore shows as untracked - all dummy files are ignored)
+
+$ git check-ignore -v debug.log
+.gitignore:1:*.log      debug.log
+
+$ git check-ignore -v data.tmp
+.gitignore:2:*.tmp      data.tmp
+
+$ git check-ignore -v build/app.out
+.gitignore:3:build/     build/app.out
+
+$ git check-ignore -v .env
+.gitignore:4:.env       .env
+
+=== Step 4: Commit only .gitignore ===
+$ git add .gitignore
+$ git commit -m "Add gitignore rules for logs, tmp, build and env"
+[main f6a7b8c] Add gitignore rules for logs, tmp, build and env
+ 1 file changed, 4 insertions(+)
+ create mode 100644 .gitignore
+
+$ git status
+On branch main
+nothing to commit, working tree clean
