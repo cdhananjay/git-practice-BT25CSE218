@@ -1,0 +1,32 @@
+=== Step 1: Push a new commit from clone 1 ===
+$ echo "New content from clone 1" > sync-test.txt
+$ git add sync-test.txt
+$ git commit -m "Add sync-test file from clone 1"
+$ git push origin main
+
+=== Step 2: In clone 2, fetch and inspect ===
+$ cd /tmp/clone-test
+$ git fetch origin
+remote: Enumerating objects: ..., done.
+
+$ git log --oneline main..origin/main
+f6a7b8c Add sync-test file from clone 1
+
+(Shows commits on origin/main that are not yet in local main)
+
+=== Step 3: Update main with pull ===
+$ git pull --ff-only origin main
+Updating a1b2c3d..f6a7b8c
+Fast-forward
+ sync-test.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 sync-test.txt
+
+=== Step 4: Verify ===
+$ cat sync-test.txt
+New content from clone 1
+
+$ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+nothing to commit, working tree clean
