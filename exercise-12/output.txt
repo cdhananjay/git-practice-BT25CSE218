@@ -1,0 +1,40 @@
+=== Step 1: Modify README.md without committing ===
+$ echo "Unfinished draft note" >> README.md
+$ git status --short
+ M README.md
+
+=== Step 2: Stash the edit ===
+$ git stash push -m "README draft"
+Saved working directory and index state On main: README draft
+
+=== Step 3: Verify stash and clean working tree ===
+$ git stash list
+stash@{0}: On main: README draft
+
+$ git status
+On branch main
+nothing to commit, working tree clean
+
+=== Step 4: Apply the stash ===
+$ git stash pop
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   README.md
+
+Dropped refs/stash@{0} (a1b2c3d4e5f6...)
+
+=== Step 5: Verify returned edit and commit ===
+$ git diff
+diff --git a/README.md b/README.md
++Unfinished draft note
+
+$ git add README.md
+$ git commit -m "Complete draft note in README"
+[main b4c5d6e] Complete draft note in README
+ 1 file changed, 1 insertion(+)
+
+$ git status
+On branch main
+nothing to commit, working tree clean
