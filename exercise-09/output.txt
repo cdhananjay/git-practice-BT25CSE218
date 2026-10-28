@@ -1,0 +1,54 @@
+=== Step 1: Create mode.txt with initial content ===
+$ echo "Lab mode: pending" > mode.txt
+$ git add mode.txt
+$ git commit -m "Add initial lab mode"
+[main a1b2c3d] Add initial lab mode
+
+=== Step 2: Create feature branch and change mode ===
+$ git switch -c feature/mode
+$ echo "Lab mode: online" > mode.txt
+$ git add mode.txt
+$ git commit -m "Select online mode"
+[feature/mode b2c3d4e] Select online mode
+
+=== Step 3: Switch to main and change mode differently ===
+$ git switch main
+$ echo "Lab mode: classroom" > mode.txt
+$ git add mode.txt
+$ git commit -m "Select classroom mode"
+[main c3d4e5f] Select classroom mode
+
+=== Step 4: Merge (conflict!) ===
+$ git merge feature/mode
+Auto-merging mode.txt
+CONFLICT (content): Merge conflict in mode.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+$ cat mode.txt
+<<<<<<< HEAD
+Lab mode: classroom
+=======
+Lab mode: online
+>>>>>>> feature/mode
+
+=== Step 5: Resolve conflict ===
+$ echo "Lab mode: hybrid" > mode.txt
+$ cat mode.txt
+Lab mode: hybrid
+
+$ git add mode.txt
+$ git commit -m "Merge mode changes with hybrid option"
+[main d4e5f6a] Merge mode changes with hybrid option
+
+=== Step 6: Verify clean status ===
+$ git status
+On branch main
+nothing to commit, working tree clean
+
+$ git log --oneline --graph --all
+*   d4e5f6a (HEAD -> main) Merge mode changes with hybrid option
+|\
+| * b2c3d4e (feature/mode) Select online mode
+* | c3d4e5f Select classroom mode
+|/
+* a1b2c3d Add initial lab mode
