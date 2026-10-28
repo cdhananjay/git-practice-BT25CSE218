@@ -1,0 +1,31 @@
+=== Create feature/help branch ===
+$ git switch -c feature/help
+Switched to a new branch 'feature/help'
+
+=== Add help.txt and commit ===
+$ git add help.txt
+$ git commit -m "Add help documentation for menu.sh"
+[feature/help e8f9a0b] Add help documentation for menu.sh
+ 1 file changed, 22 insertions(+)
+ create mode 100644 help.txt
+
+=== Merge into main ===
+$ git switch main
+Switched to branch 'main'
+
+$ git merge feature/help
+Updating ...
+Fast-forward
+ help.txt | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+ create mode 100644 help.txt
+
+=== Delete merged branch ===
+$ git branch -d feature/help
+Deleted branch feature/help (was e8f9a0b).
+
+=== Verify with log ===
+$ git log --oneline --graph --all
+* e8f9a0b (HEAD -> main) Add help documentation for menu.sh
+* d7e8f9a Add interactive menu script
+* ...previous commits...

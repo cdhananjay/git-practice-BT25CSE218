@@ -1,0 +1,25 @@
+============================
+  menu.sh - Help Guide
+============================
+
+Usage: bash menu.sh
+
+Menu Options:
+  1. Greet the user
+     - Enter your name when prompted
+     - Displays a personalized greeting
+
+  2. Add two integers
+     - Enter two integers when prompted
+     - Displays their sum
+
+  3. Check even or odd
+     - Enter an integer when prompted
+     - Tells you if the number is even or odd
+
+  4. Exit
+     - Exits the program
+
+Notes:
+  - Invalid inputs will display an error message
+  - The menu loops until you select Exit (option 4)
