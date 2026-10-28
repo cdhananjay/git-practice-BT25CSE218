@@ -1,0 +1,35 @@
+=== Version 1 (initial commit - basic greeting) ===
+
+$ cat greet.sh
+#!/bin/bash
+read -p "Enter your name: " name
+echo "Hello, $name! Welcome to Git Lab."
+
+$ bash greet.sh
+Enter your name: Dhananjay
+Hello, Dhananjay! Welcome to Git Lab.
+
+$ git add greet.sh
+$ git commit -m "Add basic greeting script"
+
+=== Version 2 (second commit - empty input handling) ===
+
+$ cat greet.sh
+#!/bin/bash
+read -p "Enter your name: " name
+if [ -z "$name" ]; then
+    echo "Hello, stranger! Please provide your name next time."
+else
+    echo "Hello, $name! Welcome to Git Lab."
+fi
+
+$ bash greet.sh
+Enter your name: Dhananjay
+Hello, Dhananjay! Welcome to Git Lab.
+
+$ bash greet.sh
+Enter your name: 
+Hello, stranger! Please provide your name next time.
+
+$ git add greet.sh
+$ git commit -m "Add input validation to greeting script"
