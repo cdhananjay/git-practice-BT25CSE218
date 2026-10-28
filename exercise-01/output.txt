@@ -1,0 +1,11 @@
+$ git --version
+git version 2.49.0
+
+$ git config user.name "Dhananjay Chavan"
+$ git config user.email "bt25cse218@iiitn.ac.in"
+
+$ git config --get user.name
+Dhananjay Chavan
+
+$ git config --get user.email
+bt25cse218@iiitn.ac.in
