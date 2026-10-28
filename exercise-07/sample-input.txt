@@ -1,0 +1,15 @@
+Test Case 1 - Greet:
+  Choice: 1
+  Name: Dhananjay
+
+Test Case 2 - Add integers:
+  Choice: 2
+  First integer: 15
+  Second integer: 27
+
+Test Case 3 - Check even/odd:
+  Choice: 3
+  Integer: 42
+
+Test Case 4 - Exit:
+  Choice: 4

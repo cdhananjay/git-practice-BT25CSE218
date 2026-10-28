@@ -1,0 +1,55 @@
+=== Creating feature branch ===
+$ git switch -c feature/menu
+Switched to a new branch 'feature/menu'
+
+=== Running menu.sh - All options ===
+
+$ bash menu.sh
+
+==============================
+       MAIN MENU
+==============================
+1. Greet the user
+2. Add two integers
+3. Check even or odd
+4. Exit
+==============================
+Enter your choice (1-4): 1
+Enter your name: Dhananjay
+Hello, Dhananjay! Welcome!
+
+==============================
+       MAIN MENU
+==============================
+Enter your choice (1-4): 2
+Enter first integer: 15
+Enter second integer: 27
+Sum of 15 and 27 = 42
+
+==============================
+       MAIN MENU
+==============================
+Enter your choice (1-4): 3
+Enter an integer: 42
+42 is even.
+
+==============================
+       MAIN MENU
+==============================
+Enter your choice (1-4): 4
+Goodbye!
+
+=== Commit and merge ===
+$ git add menu.sh
+$ git commit -m "Add interactive menu script"
+[feature/menu d7e8f9a] Add interactive menu script
+
+$ git switch main
+$ git merge feature/menu
+Updating ... Fast-forward
+ menu.sh | 52 ++++++++++++++++++++++++++++
+ 1 file changed, 52 insertions(+)
+
+$ git log --oneline --graph --all
+* d7e8f9a (HEAD -> main, feature/menu) Add interactive menu script
+* ...previous commits...
