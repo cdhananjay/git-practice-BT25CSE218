@@ -1,0 +1,26 @@
+=== Step 1: Create empty repository on GitHub ===
+(Created git-practice-BT25CSE218 on GitHub via web interface)
+
+=== Step 2: Add remote and push ===
+$ git remote add origin https://github.com/cdhananjay/git-practice-BT25CSE218.git
+$ git remote -v
+origin  https://github.com/cdhananjay/git-practice-BT25CSE218.git (fetch)
+origin  https://github.com/cdhananjay/git-practice-BT25CSE218.git (push)
+
+$ git push -u origin main
+Enumerating objects: ..., done.
+Counting objects: 100%, done.
+Branch 'main' set up to track remote branch 'main' from 'origin'.
+
+=== Step 3: Clone into a different folder ===
+$ git clone https://github.com/cdhananjay/git-practice-BT25CSE218.git /tmp/clone-test
+Cloning into '/tmp/clone-test'...
+
+=== Step 4: Verify history and remote URL ===
+$ cd /tmp/clone-test
+$ git log --oneline
+(shows all commits from the original repository)
+
+$ git remote -v
+origin  https://github.com/cdhananjay/git-practice-BT25CSE218.git (fetch)
+origin  https://github.com/cdhananjay/git-practice-BT25CSE218.git (push)
