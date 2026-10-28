@@ -1,0 +1,47 @@
+=== VS Code Merge Conflict Resolution ===
+
+Step 1: Create practice file on main
+$ echo "Lab setting: default" > practice-conflict.txt
+$ git add practice-conflict.txt
+$ git commit -m "Add practice conflict file"
+
+Step 2: Create branch and modify
+$ git switch -c feature/conflict-test
+$ echo "Lab setting: online only" > practice-conflict.txt
+$ git add practice-conflict.txt
+$ git commit -m "Set lab to online"
+
+Step 3: Modify same line on main
+$ git switch main
+$ echo "Lab setting: in-person only" > practice-conflict.txt
+$ git add practice-conflict.txt
+$ git commit -m "Set lab to in-person"
+
+Step 4: Trigger merge conflict
+$ git merge feature/conflict-test
+CONFLICT (content): Merge conflict in practice-conflict.txt
+
+Step 5: Resolve in VS Code
+- Open practice-conflict.txt from "Merge Changes" in Source Control
+- VS Code shows inline conflict markers:
+  <<<<<<< HEAD (Current Change)
+  Lab setting: in-person only
+  =======
+  Lab setting: online only
+  >>>>>>> feature/conflict-test (Incoming Change)
+- Neither "Accept Current" nor "Accept Incoming" is correct
+- Manually edit to: "Lab setting: hybrid (both online and in-person)"
+- Save the file
+
+Step 6: Complete the merge
+- Stage the resolved file (click "+")
+- Commit to complete the merge
+- Message: "Resolve conflict: use hybrid lab setting"
+
+Step 7: Verify
+$ git status
+On branch main
+nothing to commit, working tree clean
+
+$ cat practice-conflict.txt
+Lab setting: hybrid (both online and in-person)
