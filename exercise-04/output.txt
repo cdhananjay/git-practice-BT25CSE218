@@ -1,0 +1,47 @@
+$ echo "This is file 1 - committed first." > file1.txt
+$ echo "This is file 2 - initially left untracked, committed later." > file2.txt
+
+=== Before staging ===
+$ git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        file1.txt
+        file2.txt
+
+nothing added to commit but untracked files present
+
+=== Stage and commit only file1.txt ===
+$ git add file1.txt
+$ git status
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   file1.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        file2.txt
+
+$ git commit -m "Add file1.txt, leave file2.txt untracked"
+[main b3c4d5e] Add file1.txt, leave file2.txt untracked
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file1.txt
+
+=== After committing file1.txt ===
+$ git status
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        file2.txt
+
+=== Now commit file2.txt ===
+$ git add file2.txt
+$ git commit -m "Add file2.txt"
+[main c4d5e6f] Add file2.txt
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file2.txt
+
+$ git status
+On branch main
+nothing to commit, working tree clean
