@@ -1,0 +1,43 @@
+=== Step 1: Edit README.md and stage it ===
+$ echo "Session 1: Repository basics" >> README.md
+$ git add README.md
+
+=== Step 2: Edit README.md again (without staging) ===
+$ echo "Session 2: Collaboration" >> README.md
+
+=== Step 3: Run diff commands ===
+
+$ git diff
+diff --git a/README.md b/README.md
+--- a/README.md
++++ b/README.md
+@@ -5,3 +5,4 @@
+ Session 1: Repository basics
++Session 2: Collaboration
+
+(Shows unstaged changes - Session 2 line is not yet staged)
+
+$ git diff --staged
+diff --git a/README.md b/README.md
+--- a/README.md
++++ b/README.md
+@@ -4,3 +4,4 @@
++Session 1: Repository basics
+
+(Shows staged changes - Session 1 line is staged for commit)
+
+$ git diff HEAD
+diff --git a/README.md b/README.md
+--- a/README.md
++++ b/README.md
+@@ -4,3 +4,5 @@
++Session 1: Repository basics
++Session 2: Collaboration
+
+(Shows all changes compared to last commit - both lines appear)
+
+=== Step 4: Stage final version and commit ===
+$ git add README.md
+$ git commit -m "Document planned lab sessions"
+[main e5f6a7b] Document planned lab sessions
+ 1 file changed, 2 insertions(+)
