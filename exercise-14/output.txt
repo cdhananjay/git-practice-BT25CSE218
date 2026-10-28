@@ -1,0 +1,29 @@
+=== Step 1: Create feature branch ===
+$ git switch -c feature/calculator
+Switched to a new branch 'feature/calculator'
+
+=== Step 2: Add calculator script ===
+$ git add calculator.sh
+$ git commit -m "Add calculator script for collaboration"
+[feature/calculator c5d6e7f] Add calculator script for collaboration
+
+=== Step 3: Test the script ===
+$ bash calculator.sh
+==============================
+   Simple Calculator
+==============================
+Enter first number: 10
+Enter operator (+, -, *, /): +
+Enter second number: 5
+Result: 10 + 5 = 15
+
+=== Step 4: Push feature branch ===
+$ git push -u origin feature/calculator
+
+=== Step 5: Open pull request on GitHub ===
+Pull Request: "Add calculator script"
+- Reviewed by partner
+- Approved and merged into main
+
+=== Pull Request Link ===
+See README.md for the pull request link.
