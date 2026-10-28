@@ -1,0 +1,31 @@
+$ git init -b main
+Initialized empty Git repository in /home/user/git-assignment-BT25CSE218/.git/
+
+$ cat README.md
+# Git Version Control Lab
+Name: Dhananjay Chavan
+Roll Number: BT25CSE218
+Project Title: Git Version Control Lab Assignment
+
+$ git add README.md
+
+$ git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   README.md
+
+$ git commit -m "Add lab introduction"
+[main (root-commit) a1b2c3d] Add lab introduction
+ 1 file changed, 4 insertions(+)
+ create mode 100644 README.md
+
+$ git status
+On branch main
+nothing to commit, working tree clean
+
+$ git log --oneline
+a1b2c3d Add lab introduction
