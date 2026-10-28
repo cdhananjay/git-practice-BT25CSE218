@@ -1,0 +1,27 @@
+=== Step 1: Create and commit temporary.txt ===
+$ echo "This is a temporary feature" > temporary.txt
+$ git add temporary.txt
+$ git commit -m "Add temporary feature"
+[main f1a2b3c] Add temporary feature
+ 1 file changed, 1 insertion(+)
+ create mode 100644 temporary.txt
+
+=== Step 2: Revert the commit ===
+$ git revert --no-edit HEAD
+[main a3b4c5d] Revert "Add temporary feature"
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 temporary.txt
+
+=== Step 3: Verify ===
+$ git log -2 --oneline
+a3b4c5d Revert "Add temporary feature"
+f1a2b3c Add temporary feature
+
+$ ls temporary.txt
+ls: cannot access 'temporary.txt': No such file or directory
+
+(temporary.txt is removed from working tree, both commits preserved in history)
+
+$ git status
+On branch main
+nothing to commit, working tree clean
