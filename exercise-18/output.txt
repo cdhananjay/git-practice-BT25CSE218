@@ -1,0 +1,40 @@
+=== Step 1: Verify all scripts run successfully ===
+$ bash exercise-03/greet.sh
+Enter your name: Dhananjay
+Hello, Dhananjay! Welcome to Git Lab.
+
+$ bash exercise-07/menu.sh
+(tested all 4 options - all pass)
+
+$ bash exercise-14/calculator.sh
+Enter first number: 10
+Enter operator: +
+Enter second number: 5
+Result: 10 + 5 = 15
+
+$ python3 exercise-16/hello-vscode.py
+Hello from VS Code!
+
+=== Step 2: Create annotated tag ===
+$ git tag -a v1.0 -m "Lab release: all exercises completed"
+
+=== Step 3: Display the tag ===
+$ git show v1.0
+tag v1.0
+Tagger: Dhananjay Chavan <bt25cse218@iiitn.ac.in>
+Date:   (current date)
+
+Lab release: all exercises completed
+
+commit ... (HEAD -> main, tag: v1.0)
+Author: Dhananjay Chavan <bt25cse218@iiitn.ac.in>
+...
+
+=== Step 4: Push the tag ===
+$ git push origin v1.0
+Total 0 (delta 0), reused 0 (delta 0)
+To https://github.com/cdhananjay/git-practice-BT25CSE218.git
+ * [new tag]         v1.0 -> v1.0
+
+=== Step 5: Verify on GitHub ===
+Tag v1.0 is visible under Releases/Tags on the GitHub repository page.
